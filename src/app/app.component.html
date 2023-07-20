@@ -1,3 +1,62 @@
-<div class="container text-center">
-  <h1>Welcome!</h1>
+<div class="container">
+  <h4>Formularios <small>Validación de Formularios Reactivos </small></h4>
+  <hr>
+  <form [formGroup]="form" (ngSubmit)="guardar()">
+    <div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Nombre</label>
+        <div class="col-8">
+          <input class="form-control mb-3" type="text" placeholder="Nombre" formControlName="nombre">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Apellido</label>
+        <div class="col-8">
+          <input class="form-control mb-3" type="text" placeholder="Apellido" formControlName="apellido">
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Correo</label>
+      <div class="col-md-8">
+        <input class="form-control mb-3" type="email" placeholder="Correo electrónico" formControlName="correo">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Password</label>
+      <div class="col-md-8">
+        <input class="form-control mb-3" type="password" formControlName="password1">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Confirmar password</label>
+      <div class="col-md-8">
+        <input class="form-control mb-3" type="password" formControlName="password2">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-2 col-form-label">&nbsp;</label>
+      <div class="input-group col-md-8">
+        <button type="submit" class="btn btn-outline-primary mr-2">
+          Guardar
+        </button>
+        <button type="submit" class="btn btn-outline-danger">
+          Limpiar
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
+  <h3 class="mt-5">Formulario</h3>
+  <pre>
+    Estado del Formulario:{{form.valid}}
+    <br>
+    Status:{{form.status}}
+  </pre>
+  <pre>
+    {{form.value | json}}
+  </pre>
+
 </div>
