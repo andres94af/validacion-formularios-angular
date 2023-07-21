@@ -1,46 +1,56 @@
-<div class="container">
+<div class="container mt-3">
   <h4>Formularios <small>Validación de Formularios Reactivos </small></h4>
   <hr>
   <form [formGroup]="form" (ngSubmit)="guardar()">
     <div>
-      <div class="form-group row">
+      <div class="form-group row mb-3">
         <label class="col-2 col-form-label">Nombre</label>
         <div class="col-8">
-          <input class="form-control mb-3" type="text" placeholder="Nombre" formControlName="nombre">
+          <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre"
+            [class.is-invalid]="campoInvalido('nombre')">
+          <small *ngIf="campoInvalido('nombre')" class="text-danger">Ingrese un nombre con un minimo de 5 caracteres</small>
         </div>
       </div>
-      <div class="form-group row">
+      <div class="form-group row mb-3">
         <label class="col-2 col-form-label">Apellido</label>
         <div class="col-8">
-          <input class="form-control mb-3" type="text" placeholder="Apellido" formControlName="apellido">
+          <input class="form-control" type="text" placeholder="Apellido" formControlName="apellido"
+          [class.is-invalid]="campoInvalido('apellido')">
+          <small *ngIf="campoInvalido('apellido')" class="text-danger">Ingrese un apellido, es un campo requerido</small>
         </div>
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row mb-3">
       <label class="col-2 col-form-label">Correo</label>
       <div class="col-md-8">
-        <input class="form-control mb-3" type="email" placeholder="Correo electrónico" formControlName="correo">
+        <input class="form-control" type="email" placeholder="Correo electrónico" formControlName="correo"
+        [class.is-invalid]="campoInvalido('correo')">
+        <small *ngIf="campoInvalido('correo')" class="text-danger">Ingrese un email válido. Ej.: usuario@mail.com</small>
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row mb-3">
       <label class="col-2 col-form-label">Password</label>
       <div class="col-md-8">
-        <input class="form-control mb-3" type="password" formControlName="password1">
+        <input class="form-control" type="password" formControlName="password1" 
+        [class.is-invalid]="campoInvalido('password1')">
+        <small *ngIf="campoInvalido('password1')" class="text-danger">Ingrese una contraseña con un mínimo de 6 caracteres</small>
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row mb-3">
       <label class="col-2 col-form-label">Confirmar password</label>
       <div class="col-md-8">
-        <input class="form-control mb-3" type="password" formControlName="password2">
+        <input class="form-control" type="password" formControlName="password2" 
+        [class.is-invalid]="campoInvalido('password2')">
+        <small *ngIf="campoInvalido('password2')" class="text-danger">Las contraseñas no coinciden. Vuelva a intentarlo</small>
       </div>
     </div>
-    <div class="form-group row">
+    <div class="form-group row mb-3">
       <label class="col-2 col-form-label">&nbsp;</label>
       <div class="input-group col-md-8">
         <button type="submit" class="btn btn-outline-primary mr-2">
           Guardar
         </button>
-        <button type="submit" class="btn btn-outline-danger">
+        <button type="button" (click)="limpiar()" class="btn btn-outline-danger">
           Limpiar
         </button>
       </div>
